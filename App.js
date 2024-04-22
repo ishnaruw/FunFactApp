@@ -3,18 +3,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Picker } from '@react-native-picker/picker';
 import animalImage from './assets/animals/animals.jpeg'; 
 import spaceImage from './assets/space/space.png'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RadioButton } from 'react-native-paper'; 
-// import React, { useState, useEffect } from 'react';
 
 
-
-// Settings screen component
-const SettingsScreen = ({ navigation }) => {
-
+const SettingsScreen = () => {
   const [settings, setSettings] = useState({
     theme: 'light',
     notification: 'Off',
@@ -77,13 +72,13 @@ const SettingsScreen = ({ navigation }) => {
         <View style={styles.radioGroup}>
           <RadioButton
             value="On"
-            status={settings.language === 'On' ? 'checked' : 'unchecked'}
+            status={settings.notification === 'On' ? 'checked' : 'unchecked'}
             onPress={() => setSettings({ ...settings, notification: 'On' })}
           />
           <Text>On</Text>
           <RadioButton
             value="Off"
-            status={settings.language === 'Off' ? 'checked' : 'unchecked'}
+            status={settings.notification === 'Off' ? 'checked' : 'unchecked'}
             onPress={() => setSettings({ ...settings, notification: 'Off' })}
           />
           <Text>Off</Text>
@@ -94,14 +89,14 @@ const SettingsScreen = ({ navigation }) => {
         <View style={styles.radioGroup}>
           <RadioButton
             value="On"
-            status={settings.language === 'On' ? 'checked' : 'unchecked'}
+            status={settings.sound === 'On' ? 'checked' : 'unchecked'}
             onPress={() => setSettings({ ...settings, sound: 'On' })}
           />
           <Text>On</Text>
           <RadioButton
             value="Off"
-            status={settings.language === 'Off' ? 'checked' : 'unchecked'}
-            onPress={() => setSettings({ ...settings, sounc: 'Off' })}
+            status={settings.sound === 'Off' ? 'checked' : 'unchecked'}
+            onPress={() => setSettings({ ...settings, sound: 'Off' })}
           />
           <Text>Off</Text>
         </View>
@@ -116,7 +111,7 @@ const SettingsScreen = ({ navigation }) => {
 
 
 // Animals screen component
-const AnimalsScreen = ({ navigation }) => {
+const AnimalsScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Animals Facts Page</Text>
@@ -132,7 +127,7 @@ const AnimalsScreen = ({ navigation }) => {
 };
 
 // Space screen component
-const SpaceScreen = ({ navigation }) => {
+const SpaceScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Space Facts Page</Text>
@@ -238,18 +233,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  // input: {
-  //   width: 150, 
-  //   height: 40, 
-  //   borderWidth: 1,
-  //   borderColor: '#ccc',
-  //   borderRadius: 5,
-  //   padding: 10,
-  //   flex: 1,
-  //   //alignItems: 'center',
-  //   justifyContent: 'center',
-  //   paddingHorizontal: 20
-  //   // width: 200, 
-  //   // height: 50
-  // },
 });
